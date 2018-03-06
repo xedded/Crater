@@ -26,21 +26,19 @@ namespace Crater.Controllers
         //ajax anrop till controller
         [HttpGet]
         //[Route("movie/moviebox/{idName}")]
-        public IActionResult Info(dynamic craterName)
+        public IActionResult Info()
         {
             // var crater = repository.GetCraterByName(craterName);
 
             return PartialView("_InfoBox", new IndexInfoVM
             {
                 Age = 11,
-                CraterLocation="sweden",
+                CraterLocation="Sweden",
                 CraterName="Dellen",
                 Diameter=23,
                 Type="Stone"
 
-                // CraterName = crater.craternname;
-                //MovieName = movie.MovieName,
-                //MovieSum = movie.MovieSum
+               
 
             });
         }

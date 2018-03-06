@@ -2,7 +2,7 @@
 
 $("#btnInfo").click(function () {
 
-    var idName = document.getElementById("textBoxCraterName").value;
+    var idName = document.getElementById("#textBoxCraterName").value;
     $.ajax({
         url: "/index/info/" + idName,
         type: "GET",
