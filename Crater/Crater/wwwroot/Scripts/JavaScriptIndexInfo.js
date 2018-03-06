@@ -3,7 +3,7 @@
 $("#btnInfo").click(function () {
 
     var idNameList = document.getElementById("Select1");
-    var selectedName = idNameList.options[idNameList.selectedIndex].text;
+    var selectedName = idNameList.options[idNameList.selectedIndex].text;       //array?
     $.ajax({
         url: "/index/info/" + selectedName,
         type: "GET",

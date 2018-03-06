@@ -78,7 +78,7 @@ namespace Crater.Models
 
         public CraterDetails GetCraterByName(string name)
         {
-            return context.CraterDetails.Find(name);
+            return context.CraterDetails.Find(name.ToLower());
         }
 
 

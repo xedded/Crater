@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Crater.Models;
+using Crater.Models.Entities;
 using Crater.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,13 +31,12 @@ namespace Crater.Controllers
         }
 
         [HttpGet]
-        public IActionResult Info(string craterNameInputParameter)
+        public IActionResult Info()
         {
-            var crater = repository.GetCraterByName(craterNameInputParameter);
+            CraterDetails crater = repository.GetCraterByName("Dellen");
 
             return PartialView("_InfoBox", new IndexInfoVM
             {
-
                 Age = crater.Age,
                 CraterName = crater.CraterName,
                 Diameter = crater.Diameter,
