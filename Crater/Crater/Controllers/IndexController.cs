@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Crater.Models;
+using Crater.Models.Entities;
 using Crater.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,7 +36,6 @@ namespace Crater.Controllers
 
             return PartialView("_InfoBox", new IndexInfoVM
             {
-
                 Age = crater.Age,
                 CraterName = crater.CraterName,
                 Diameter = crater.Diameter,
