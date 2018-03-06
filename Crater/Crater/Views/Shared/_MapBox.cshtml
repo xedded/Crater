@@ -4,8 +4,8 @@
 
 <script>
     function myMap() {
-        console.log(@Model.Lat, @Model.Lng);
-        var myCenter = new google.maps.LatLng(@Model.Lat,@Model.Lng);
+        
+        var myCenter = new google.maps.LatLng(60,40);
         var mapCanvas = document.getElementById("map");
         var mapOptions = { center: myCenter, zoom: 5 };
         var map = new google.maps.Map(mapCanvas, mapOptions);
@@ -13,7 +13,7 @@
         marker.setMap(map);
         google.maps.event.addListener(marker, 'click', function () {
             var infowindow = new google.maps.InfoWindow({
-                content: "@Model.CraterName"
+                content: "Test"
             });
             infowindow.open(map, marker);
         });

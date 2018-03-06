@@ -5,7 +5,7 @@ namespace Crater.Models.Entities
 {
     public partial class CraterDetails
     {
-        public string LocationId { get; set; }
+        public int LocationId { get; set; }
         public string CraterName { get; set; }
         public string Diameter { get; set; }
         public string Age { get; set; }
