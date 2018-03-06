@@ -38,15 +38,14 @@ namespace Crater.Controllers
                 Diameter=23,
                 Type="Stone"
 
-               
-
             });
         }
 
 
         public IActionResult Map()
         {
-            return Content("buu2");
+            return PartialView("_MapBox");
+                
         }
     }
 }
