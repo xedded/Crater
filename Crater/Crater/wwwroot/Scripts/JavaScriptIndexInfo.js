@@ -19,7 +19,7 @@ $("#btnInfo").click(function () {
         data: null,
         success: function (result) {
             console.log(result);
-            $("#divResultDetails2").html(result);
+            $("#divResultMap").html(result);
         }
     });
 });
