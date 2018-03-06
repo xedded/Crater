@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crater", "Crater\Crater.csproj", "{A91F7D9A-3E72-437C-9EB4-41EB3FE20BBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A91F7D9A-3E72-437C-9EB4-41EB3FE20BBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A91F7D9A-3E72-437C-9EB4-41EB3FE20BBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A91F7D9A-3E72-437C-9EB4-41EB3FE20BBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A91F7D9A-3E72-437C-9EB4-41EB3FE20BBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DCAC8BE9-C44B-4AB3-ABF3-C9188AA64A3B}
+	EndGlobalSection
+EndGlobal
