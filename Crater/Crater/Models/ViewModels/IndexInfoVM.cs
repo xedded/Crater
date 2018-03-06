@@ -9,8 +9,8 @@ namespace Crater.Models.ViewModels
     {
         public string CraterName { get; set; }
         public string CraterLocation { get; set; }
-        public double Diameter { get; set; }
-        public double Age { get; set; }
+        public string Diameter { get; set; }
+        public string Age { get; set; }
         public string Type { get; set; }
     }
 }

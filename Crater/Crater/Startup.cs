@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Crater.Models;
 using Crater.Models.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -20,8 +21,7 @@ namespace Crater
             var connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Crater;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             services.AddMvc();
             services.AddDbContext<CraterContext>(o => o.UseSqlServer(connectionString));
-
-            //Scaffold-DbContext "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Crater;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" Microsoft.EntityFrameworkCore.SqlServer -OutputDir "Models/Entities" -Context "CraterContext" -Force
+            services.AddTransient<CraterRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

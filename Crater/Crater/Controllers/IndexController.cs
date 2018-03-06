@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Crater.Models;
-using Crater.Models.Entities;
 using Crater.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,46 +12,48 @@ namespace Crater.Controllers
 {
     public class IndexController : Controller
     {
-        private readonly CraterRepository repository;
+        public readonly CraterRepository repository;
 
         public IndexController(CraterRepository repository)
         {
             this.repository = repository;
         }
 
+
         // GET: /<controller>/
         [Route("")]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var crater = await repository.GetAllPeopleAsyncIndexIndexVM();
+
+            return View(crater);
         }
 
-        public IActionResult Info(string craterInputParameter)
+        [HttpGet]
+        public IActionResult Info(string craterNameInputParameter)
         {
-             //var crater = repository.GetCraterByName(craterInputParameter);
+            var crater = repository.GetCraterByName(craterNameInputParameter);
 
             return PartialView("_InfoBox", new IndexInfoVM
             {
-                
-                CraterLocation = "Sweden",
-                CraterName = "Dellen",
-                Diameter = 23,
-                Type = "Stone"
 
+                Age = crater.Age,
+                CraterName = crater.CraterName,
+                Diameter = crater.Diameter,
+                Type = crater.CompositionType,
+                CraterLocation = "How 'bout no?"
+                
             });
         }
 
 
         public IActionResult Map()
         {
-            return PartialView("_MapBox", new InfoMapVM
-            {
-                CraterName = "Dellen",
-                Lat = "61.48",
-                Lng = "16.48"
+            return PartialView("_MapBox", new InfoMapVM[]{
 
-            });
 
+
+                });
         }
     }
 }

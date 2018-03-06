@@ -28,10 +28,58 @@ namespace Crater.Models
                     CraterName = o.CraterName,
                     Lng = o.Longitude,
                     Lat = o.Latitude
-    })
+                })
                 .ToArrayAsync();
 
-}
+        }
+
+        public async Task<IndexIndexVM[]> GetAllPeopleAsyncIndexIndexVM()
+        {
+
+            return await context.CraterDetails
+                .OrderBy(o => o.CraterName)
+                .Select(o => new IndexIndexVM
+                {
+                    CraterName = o.CraterName
+                })
+                .ToArrayAsync();
+
+        }
+
+        public dynamic GetAllCraters(string craterName)
+        {
+
+            var q = context
+                .CraterDetails
+                .Select(c => new IndexInfoVM
+                {
+                    CraterName = c.CraterName,
+                 //   CraterLocation = GetCorrectLocation(c.Location),//c.Location, //hur gör man detta, fel signatur
+                    Diameter = c.Diameter,
+                    Age = c.Age,
+                    Type = c.CompositionType,
+                    
+                    
+                });
+
+            return q;
+        }
+
+        //private string GetCorrectLocation(dynamic location)
+        //{
+        //    var r = context
+        //        .CraterLocation
+        //        .Select(p=>p.Location)
+        //        {
+
+        //        }
+        //    return r;
+        //}
+
+        public CraterDetails GetCraterByName(string name)
+        {
+            return context.CraterDetails.Find(name);
+        }
 
 
 
