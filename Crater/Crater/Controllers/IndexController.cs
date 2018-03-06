@@ -26,7 +26,7 @@ namespace Crater.Controllers
         //ajax anrop till controller
         [HttpGet]
         //[Route("movie/moviebox/{idName}")]
-        public IActionResult Info()
+        public IActionResult Info(string craterNameInputParameter)
         {
             // var crater = repository.GetCraterByName(craterName);
 
