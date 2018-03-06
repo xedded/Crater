@@ -18,6 +18,14 @@ namespace Crater.Controllers
             return View();
         }
 
+        //public IActionResult Info()
+        //{
+        //    return Content("buuu");
+        //}
+
+        //ajax anrop till controller
+        [HttpGet]
+        //[Route("movie/moviebox/{idName}")]
         public IActionResult Info(string craterNameInputParameter)
         {
             // var crater = repository.GetCraterByName(craterName);
@@ -25,10 +33,12 @@ namespace Crater.Controllers
             return PartialView("_InfoBox", new IndexInfoVM
             {
                 Age = 11,
-                CraterLocation = "Sweden",
-                CraterName = "Dellen",
-                Diameter = 23,
-                Type = "Stone"
+                CraterLocation="Sweden",
+                CraterName="Dellen",
+                Diameter=23,
+                Type="Stone"
+
+               
 
             });
         }
@@ -36,14 +46,7 @@ namespace Crater.Controllers
 
         public IActionResult Map()
         {
-            return PartialView("_MapBox", new InfoMapVM
-            {
-                CraterName = "Dellen",
-                Lat = "61.48",
-                Lng = "16.48"
-
-            });
-
+            return Content("buu2");
         }
     }
 }
