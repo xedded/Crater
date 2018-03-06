@@ -30,9 +30,8 @@ namespace Crater.Controllers
         }
 
         [HttpGet]
-        public IActionResult Info(string craterNameInputParameter)
+        public IActionResult Info()
         {
-            var crater = repository.GetCraterByName(craterNameInputParameter);
 
             return PartialView("_InfoBox", new IndexInfoVM
             {
@@ -40,9 +39,9 @@ namespace Crater.Controllers
                 Age = crater.Age,
                 CraterName = crater.CraterName,
                 Diameter = crater.Diameter,
-                Type = crater.CompositionType,
-                CraterLocation = "How 'bout no?"
-                
+                Type = crater.Type,
+                CraterLocation = crater.CraterLocation
+
             });
         }
 

@@ -76,9 +76,13 @@ namespace Crater.Models
         //    return r;
         //}
 
-        public CraterDetails GetCraterByName(string name)
+        public CraterDetails GetCraterById(int id)
         {
-            return context.CraterDetails.Find(name);
+            //return context.CraterDetails.Find();
+
+            return context.CraterDetails.Find(id);
+                
+
         }
 
 
