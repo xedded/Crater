@@ -11,5 +11,15 @@ $("#btnInfo").click(function () {
             console.log(result);
             $("#divResultDetails").html(result);
         }
+    }),
+
+    $.ajax({
+        url: "/index/map/" + idName,
+        type: "GET",
+        data: null,
+        success: function (result) {
+            console.log(result);
+            $("#divResultDetails2").html(result);
+        }
     });
 });

@@ -33,14 +33,10 @@ namespace Crater.Controllers
             return PartialView("_InfoBox", new IndexInfoVM
             {
                 Age = 11,
-                CraterLocation="sweden",
+                CraterLocation="Sweden",
                 CraterName="Dellen",
                 Diameter=23,
                 Type="Stone"
-                
-                // CraterName = crater.craternname;
-                //MovieName = movie.MovieName,
-                //MovieSum = movie.MovieSum
 
             });
         }
@@ -48,7 +44,8 @@ namespace Crater.Controllers
 
         public IActionResult Map()
         {
-            return Content("buu2");
+            return PartialView("_MapBox");
+                
         }
     }
 }
