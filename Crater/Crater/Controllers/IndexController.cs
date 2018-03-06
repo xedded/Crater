@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Crater.Models;
+using Crater.Models.Entities;
 using Crater.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +13,13 @@ namespace Crater.Controllers
 {
     public class IndexController : Controller
     {
+        private readonly CraterRepository repository;
+
+        public IndexController(CraterRepository repository)
+        {
+            this.repository = repository;
+        }
+
         // GET: /<controller>/
         [Route("")]
         public IActionResult Index()
@@ -18,13 +27,13 @@ namespace Crater.Controllers
             return View();
         }
 
-        public IActionResult Info(string craterNameInputParameter)
+        public IActionResult Info(string craterInputParameter)
         {
-            // var crater = repository.GetCraterByName(craterName);
+             //var crater = repository.GetCraterByName(craterInputParameter);
 
             return PartialView("_InfoBox", new IndexInfoVM
             {
-                Age = 11,
+                
                 CraterLocation = "Sweden",
                 CraterName = "Dellen",
                 Diameter = 23,

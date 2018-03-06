@@ -20,6 +20,7 @@ namespace Crater
             var connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Crater;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             services.AddMvc();
             services.AddDbContext<CraterContext>(o => o.UseSqlServer(connectionString));
+
             //Scaffold-DbContext "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Crater;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" Microsoft.EntityFrameworkCore.SqlServer -OutputDir "Models/Entities" -Context "CraterContext" -Force
         }
 
