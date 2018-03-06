@@ -1,4 +1,4 @@
-﻿
+﻿@model IndexIndexVM[]
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,14 +13,22 @@
     <h2>Craters/index</h2>
 
     <br />
+    <select id="Select1">
+        @foreach (var item in Model)
+        {
+            <option id="@item.Id"> @item.CraterName</option>
+
+        }
+
+    </select>
+    <button id="btnInfo">Go</button>
+
     <input type="text" name="ID" placeholder="Name of crater" id="textBoxCraterName"><br>
-    
-    <button id="btnInfo">Go for crater</button>
+    <button id="btnSearch">Search</button>
     <br />
 
     <div id="divResultDetails"></div>
     <div id="divResultMap"></div>
-
 
 
 

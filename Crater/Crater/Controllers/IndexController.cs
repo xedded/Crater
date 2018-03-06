@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Crater.Models;
 using Crater.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,42 +12,48 @@ namespace Crater.Controllers
 {
     public class IndexController : Controller
     {
-        // GET: /<controller>/
-        [Route("")]
-        public IActionResult Index()
+        public readonly CraterRepository repository;
+
+        public IndexController(CraterRepository repository)
         {
-            return View();
+            this.repository = repository;
         }
 
-        //public IActionResult Info()
-        //{
-        //    return Content("buuu");
-        //}
 
-        //ajax anrop till controller
+        // GET: /<controller>/
+        [Route("")]
+        public async Task<IActionResult> Index()
+        {
+            var crater = await repository.GetAllPeopleAsyncIndexIndexVM();
+
+            return View(crater);
+        }
+
         [HttpGet]
-        //[Route("movie/moviebox/{idName}")]
         public IActionResult Info(string craterNameInputParameter)
         {
-            // var crater = repository.GetCraterByName(craterName);
+            var crater = repository.GetCraterByName(craterNameInputParameter);
 
             return PartialView("_InfoBox", new IndexInfoVM
             {
-                Age = 11,
-                CraterLocation="Sweden",
-                CraterName="Dellen",
-                Diameter=23,
-                Type="Stone"
 
-               
-
+                Age = crater.Age,
+                CraterName = crater.CraterName,
+                Diameter = crater.Diameter,
+                Type = crater.CompositionType,
+                CraterLocation = "How 'bout no?"
+                
             });
         }
 
 
         public IActionResult Map()
         {
-            return Content("buu2");
+            return PartialView("_MapBox", new InfoMapVM[]{
+
+
+
+                });
         }
     }
 }
