@@ -1,0 +1,28 @@
+﻿@model IndexInfoVM
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
+
+    <title>Index</title>
+
+
+</head>
+<body>
+
+    <h2>Craters/index</h2>
+
+    <br />
+    <input type="text" name="ID" placeholder="Name of crater" id="textBoxCraterName"><br>
+    <br />
+    <button id="btnInfo">Go for crater</button>
+    <br />
+    <div id="divResultDetails">
+        @Html.Partial("_InfoBox")
+    </div>
+
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.min.js"></script>
+    <script src="~/Scripts/JavaScriptIndexInfo.js"></script>
+</body>
+</html>
