@@ -18,20 +18,6 @@ namespace Crater.Models
             this.context = context;
         }
 
-        public async Task<InfoMapVM[]> GetAllCraterAsync()
-        {
-
-            return await context.CraterDetails
-                .OrderBy(o => o.CraterName)
-                .Select(o => new InfoMapVM
-                {
-                    CraterName = o.CraterName,
-                    Lng = o.Longitude,
-                    Lat = o.Latitude
-                })
-                .ToArrayAsync();
-
-        }
 
         public async Task<IndexIndexVM[]> GetAllCraterAsyncIndexIndexVM()
         {
@@ -51,29 +37,38 @@ namespace Crater.Models
             var crater = context.CraterDetails
                 .OrderBy(o => o.CraterName)
                 .Single(o => o.CraterName == name);
+            var craterLocation = context.CraterLocation
+               .OrderBy(o => o.LocationId)
+               .Single(o => o.LocationId == crater.LocationId);
+
+
 
             return new IndexInfoVM
             {
                 CraterName = crater.CraterName,
                 Age = crater.Age,
                 Diameter = crater.Diameter,
-                Type = crater.CompositionType
+                Type = crater.CompositionType,
+                CraterLocation = craterLocation.Location
+            };
+        }
+
+        public InfoMapVM GetCraterForMap(string name)
+        {
+            var crater = context.CraterDetails
+                .OrderBy(o => o.CraterName)
+                .Single(o => o.CraterName == name);
+
+            return new InfoMapVM
+            {
+                CraterName = crater.CraterName,
+                Lat = crater.Latitude,
+                Lng = crater.Longitude
+
             };
 
         }
 
-
-        //public IndexInfoVM GetCraterByName(string name)
-        //{
-        //    var crater = context.CraterDetails.Single(c => c.CraterName == name);
-
-        //    return new IndexInfoVM {
-        //        CraterName = crater.CraterName,
-        //        Age = crater.Age,
-        //        Diameter = crater.Diameter,
-        //        Type = crater.CompositionType
-        //    };
-        //}
 
 
 

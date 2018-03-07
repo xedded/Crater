@@ -41,9 +41,9 @@ namespace Crater.Controllers
 
         [HttpGet]
         [Route("/index/map/{name}")]
-        public async Task<IActionResult> Map()
+        public IActionResult Map(string name)
         {
-            var crater = await repository.GetAllCraterAsync();
+            var crater = repository.GetCraterForMap(name);
 
             return PartialView("_MapBox", crater);
         }
