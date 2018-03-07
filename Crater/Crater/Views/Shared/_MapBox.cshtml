@@ -1,8 +1,9 @@
-﻿@model InfoMapVM[]
+﻿@*@model InfoMapVM[]
 
 <div id="map" style="width:100%;height:300px"></div>
 
 <script>
+
     function myMap() {
         console.log(@Model.Lat, @Model.Lng);
         var myCenter = new google.maps.LatLng(@Model.Lat,@Model.Lng);
@@ -16,9 +17,16 @@
                 content: "@Model.CraterName"
             });
             infowindow.open(map, marker);
+
+            @foreach (var item in Model)
+            {
+                @item.CraterName
+                @item.Lat
+                @item.Lng
+            }
         });
     }
 </script>
 
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiXKSLs8ywMCWZ_4QFbSAJGT0ZhFx_cYI&callback=myMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBiXKSLs8ywMCWZ_4QFbSAJGT0ZhFx_cYI&callback=myMap"></script>*@

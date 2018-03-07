@@ -31,9 +31,9 @@ namespace Crater.Controllers
         }
 
         [HttpGet]
-        public IActionResult Info()
+        public IActionResult Info(string name)
         {
-
+            var crater = repository.GetCraterByName(name);
             return PartialView("_InfoBox", new IndexInfoVM
             {
                 Age = crater.Age,
@@ -49,8 +49,6 @@ namespace Crater.Controllers
         public IActionResult Map()
         {
             return PartialView("_MapBox", new InfoMapVM[]{
-
-
 
                 });
         }
