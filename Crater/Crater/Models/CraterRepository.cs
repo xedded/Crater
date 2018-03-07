@@ -51,6 +51,7 @@ namespace Crater.Models
             var crater = context.CraterDetails
                 .OrderBy(o => o.CraterName)
                 .Single(o => o.CraterName == name);
+
             return new IndexInfoVM
             {
                 CraterName = crater.CraterName,
