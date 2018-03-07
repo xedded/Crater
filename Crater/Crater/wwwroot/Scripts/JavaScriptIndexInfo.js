@@ -17,7 +17,7 @@ $("#btnInfo").click(function () {
 
 
         $.ajax({
-            url: "/index/map/" + idNameList,
+            url: "/index/map/" + selectedName,
             type: "GET",
             data: null,
             success: function (result) {
@@ -26,7 +26,7 @@ $("#btnInfo").click(function () {
             }
         });
 });
-$("btnSearch").click(function () {
+$("#btnSearch").click(function () {
 
     var idName = document.getElementById("textBoxCraterName").value;
     $.ajax({

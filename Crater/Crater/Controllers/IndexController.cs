@@ -25,32 +25,27 @@ namespace Crater.Controllers
         [Route("")]
         public async Task<IActionResult> Index()
         {
-            var crater = await repository.GetAllPeopleAsyncIndexIndexVM();
+            var crater = await repository.GetAllCraterAsyncIndexIndexVM();
 
             return View(crater);
         }
 
         [HttpGet]
+        [Route("/index/info/{name}")]
         public IActionResult Info(string name)
         {
-            var crater = repository.GetCraterByName(name);
-            return PartialView("_InfoBox", new IndexInfoVM
-            {
-                Age = crater.Age,
-                CraterName = crater.CraterName,
-                Diameter = crater.Diameter,
-                Type = crater.Type,
-                CraterLocation = crater.CraterLocation
-
-            });
+            var newCrater = repository.GetCraterByName(name);
+            
+            return PartialView("_InfoBox", newCrater);
         }
 
-
-        public IActionResult Map()
+        [HttpGet]
+        [Route("/index/map/{name}")]
+        public async Task<IActionResult> Map()
         {
-            return PartialView("_MapBox", new InfoMapVM[]{
+            var crater = await repository.GetAllCraterAsync();
 
-                });
+            return PartialView("_MapBox", crater);
         }
     }
 }

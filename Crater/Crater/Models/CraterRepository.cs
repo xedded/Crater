@@ -18,7 +18,7 @@ namespace Crater.Models
             this.context = context;
         }
 
-        public async Task<InfoMapVM[]> GetAllPeopleAsync()
+        public async Task<InfoMapVM[]> GetAllCraterAsync()
         {
 
             return await context.CraterDetails
@@ -33,7 +33,7 @@ namespace Crater.Models
 
         }
 
-        public async Task<IndexIndexVM[]> GetAllPeopleAsyncIndexIndexVM()
+        public async Task<IndexIndexVM[]> GetAllCraterAsyncIndexIndexVM()
         {
 
             return await context.CraterDetails
@@ -46,42 +46,33 @@ namespace Crater.Models
 
         }
 
-        public dynamic GetAllCraters(string craterName)
+        public IndexInfoVM GetCraterByName(string name)
         {
+            var crater = context.CraterDetails
+                .OrderBy(o => o.CraterName)
+                .Single(o => o.CraterName == name);
+            return new IndexInfoVM
+            {
+                CraterName = crater.CraterName,
+                Age = crater.Age,
+                Diameter = crater.Diameter,
+                Type = crater.CompositionType
+            };
 
-            var q = context
-                .CraterDetails
-                .Select(c => new IndexInfoVM
-                {
-                    CraterName = c.CraterName,
-                 //   CraterLocation = GetCorrectLocation(c.Location),//c.Location, //hur gör man detta, fel signatur
-                    Diameter = c.Diameter,
-                    Age = c.Age,
-                    Type = c.CompositionType,
-                    
-                    
-                });
-
-            return q;
         }
 
-        //private string GetCorrectLocation(dynamic location)
+
+        //public IndexInfoVM GetCraterByName(string name)
         //{
-        //    var r = context
-        //        .CraterLocation
-        //        .Select(p=>p.Location)
-        //        {
+        //    var crater = context.CraterDetails.Single(c => c.CraterName == name);
 
-        //        }
-        //    return r;
+        //    return new IndexInfoVM {
+        //        CraterName = crater.CraterName,
+        //        Age = crater.Age,
+        //        Diameter = crater.Diameter,
+        //        Type = crater.CompositionType
+        //    };
         //}
-
-        public IndexInfoVM GetCraterByName(dynamic name)
-        {
-
-            return context.CraterDetails.Single(name);
-
-        }
 
 
 
